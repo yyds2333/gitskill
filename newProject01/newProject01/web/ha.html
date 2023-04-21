@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="static/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script>
+        function sub(){
+                $("#isub").attr("disabled",true)
+
+        }
+        function subs() {
+            console.log("in submit")
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="others" onclick="sub()">
+    <input type="submit" id="isub" value="submit" onclick="subs()">
+</body>
+</html>

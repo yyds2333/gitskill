@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    function funs(){
+      let ajaxs = new XMLHttpRequest();
+      ajaxs.open("post","/txt/ajax.txt",true);
+      ajaxs.send();
+      ajaxs.onreadystatechange = function (){
+        if (ajaxs.readyState==4 && ajaxs.status==200){
+            document.getElementById("span1").innerHTML = this.responseText;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <h1>异步请求</h1>
+    <span id="span1"></span>
+    <button type="button" onclick="funs()">获取文本</button>
+  </div>
+</body>
+</html>

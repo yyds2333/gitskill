@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="static/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script>
+        function fun(){
+            $.post("/ajax",{stuId:$("#stuId").val()},
+                function (data) {
+                    console.log(data.flag)
+                    if (data.flag){
+                        let msg=$("#msg").html(data.msg);
+                        $(msg).css('color','red');
+                        $("#subNon").attr("disabled",true);
+                    }else{
+                        let msg = $("#msg").html(data.msg);
+                        $(msg).css('color','green');
+                        $("#subNon").attr("disabled",false);
+                    }
+                }
+                ,"JSON")
+        }
+    </script>
+</head>
+<body>
+<form action="/main/login" method="post">
+    <table border="2 soild red" style="margin: auto">
+        <thead>
+        <tr>
+            <th colspan="2" align="center">
+                <h2>UserLogin</h2>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <p>account:</p>
+            </td>
+            <td>
+                <input type="text" id="stuId" name="stuId" placeholder="length = 6" onblur="fun()"><span id="msg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>password:</p>
+            </td>
+            <td>
+                <input type="password" name="password" placeholder="please input password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="submit" id="subNon">
+                <input type="reset" value="reset">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
